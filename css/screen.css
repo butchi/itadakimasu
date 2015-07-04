@@ -86,8 +86,9 @@ ul, ol {
   width: 960px;
   height: 540px;
   left: 50%;
-  bottom: 0;
+  top: 50%;
   margin-left: -480px;
+  margin-top: -270px;
 }
 
 

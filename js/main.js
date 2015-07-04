@@ -24,6 +24,6 @@ $('.form-search').on('submit', function(evt) {
     }, {
       duration: 1000
     });
-  }, 3900);
+  }, 5900);
   evt.preventDefault();
 });
