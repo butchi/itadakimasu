@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>いただきます</title>
+  <meta name="viewport" content="width=640px">
+<style>
+div, p {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-indent: 0;
+}
+
+.wrapper {
+}
+
+.screen {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 640px;
+  margin-left: -320px;
+  height: 100%;
+}
+
+.screen-top h1 {
+  position: absolute;
+  width: 640px;
+  height: 50px;
+  top: 50%;
+  margin-top: -150px;
+  text-align: center;
+  font-size: 60px;
+  color: #00c;
+}
+
+.form-search {
+  position: absolute;
+  width: 640px;
+  left: 0;
+  top: 50%;
+  height: 50px;
+  text-align: center;
+}
+
+.input-text {
+  border: solid 1px #ddd;
+  width: 60%;
+  max-width: 560px;
+  margin: auto;
+  display: block;
+  margin-bottom: 15px;
+
+  border-radius: 2px;
+  font-size: 20px;
+  line-height: 40px;
+  padding-left: 10px;
+}
+
+.btn-search {
+  -webkit-appearance: none;
+  border-style: none;
+  background-color: white;
+  padding: 0.5em 0.8em;
+  margin: 0px 0.5em;
+  background-color: #f8f8f8;
+  border: solid 1px #d3d3d3;
+  color: #333;
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: bold;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+
+
+.image-loading {
+  position: absolute;
+  width: 640px;
+  height: 320px;
+  left: 0;
+  top: 50%;
+  margin-top: -160px;
+}
+
+
+.screen .content {
+  padding: 20px;
+}
+
+.block-share li {
+  font-size: 0;
+  display: inline;
+}
+
+.block-share li + li {
+  margin-left: 5px;
+}
+
+.share-text {
+  width: 590px;
+}
+
+.screen {
+  display: none;
+}
+.screen.active {
+  display: block;
+}
+</style>
+
+</head>
+<body>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.3&appId=";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+  </script>
+
+  <div class="wrapper">
+    <section class="screen screen-top active">
+      <h1>いただきます</h1>
+      <form action="./" class="form-search">
+        <input type="text" placeholder="今日あなたが食べたものは？" class="input-text">
+        <input type="submit" class="btn-search" value="調べる">
+      </form>
+    </section>
+    <section class="screen screen-loading">
+      <div class="image-loading"><img src="http://placehold.it/640x320" alt=""></div>
+    </section>
+    <section class="screen screen-result">
+      <div class="content">
+        <h2>あなたが殺したのは…</h2>
+        <p class="image">
+          <img src="http://placehold.it/600x400" width="600" height="400" alt="">
+        </p>
+        <p class="text">吉野家で言うと○○匹</p>
+        <p class="text">ケンタッキーフライドチキンで言うと○○</p>
+        <section class="result-share"></section>
+        <ul class="block-share">
+          <li class="share-facebook">
+            <div class="fb-share-button" data-layout="button_count"></div>
+          </li>
+          <li class="share-twitter">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-text="私は牛を0.002匹殺しました。" data-hashtags="itadakimasu">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </li>
+          <textarea rows="5" class="share-text">私は牛を0.002匹殺しました。 http://itadaki.ms/20150705</textarea>
+        </ul>
+        </section>
+      </div>
+    </section>
+  </div>
+
+<script src="js/lib/jquery.js"></script>
+<script>
+var $screenTop = $('.screen-top');
+var $screenLoading = $('.screen-loading');
+var $screenResult = $('.screen-result');
+
+$('.form-search').on('submit', function(evt) {
+  if($('.input-text').val() === '') {
+    evt.preventDefault();
+    // return;
+  }
+
+  $screenTop.removeClass('active');
+  $screenLoading.addClass('active');
+
+  setTimeout(function() {
+    $screenLoading.removeClass('active');
+    $screenResult.addClass('active');
+  }, 1000);
+  evt.preventDefault();
+});
+</script>
+</body>
+</html>
