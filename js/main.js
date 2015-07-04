@@ -2,7 +2,7 @@ var $screenTop = $('.screen-top');
 var $screenLoading = $('.screen-loading');
 var $screenResult = $('.screen-result');
 
-swfobject.embedSWF("swf/loading_movie.swf", "swfContent", "610", "377", "9.0.0");
+swfobject.embedSWF("swf/loading_movie.swf", "swfContent", "960", "540", "9.0.0");
 
 $('.form-search').on('submit', function(evt) {
   if($('.input-text').val() === '') {
@@ -24,6 +24,6 @@ $('.form-search').on('submit', function(evt) {
     }, {
       duration: 1000
     });
-  }, 1900);
+  }, 3900);
   evt.preventDefault();
 });

@@ -20,6 +20,11 @@ ul, ol {
   width: 640px;
   margin-left: -320px;
   height: 100%;
+  overflow: hidden;
+}
+
+.screen-result {
+  height: auto;
 }
 
 .screen-top h1 {
@@ -78,11 +83,11 @@ ul, ol {
 
 .image-loading {
   position: absolute;
-  width: 610px;
-  height: 377px;
-  left: 0;
-  top: 50%;
-  margin-top: -188px;
+  width: 960px;
+  height: 540px;
+  left: 50%;
+  bottom: 0;
+  margin-left: -480px;
 }
 
 
