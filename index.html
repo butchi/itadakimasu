@@ -85,11 +85,11 @@ ul, ol {
 
 .image-loading {
   position: absolute;
-  width: 640px;
-  height: 320px;
+  width: 610px;
+  height: 377px;
   left: 0;
   top: 50%;
-  margin-top: -160px;
+  margin-top: -188px;
 }
 
 
@@ -139,7 +139,8 @@ ul, ol {
       </form>
     </section>
     <section class="screen screen-loading">
-      <div class="image-loading"><img src="http://placehold.it/640x320" alt=""></div>
+      <div class="image-loading">
+        <div id="swfContent"></div></div>
     </section>
     <section class="screen screen-result">
       <div class="content">
@@ -166,10 +167,13 @@ ul, ol {
   </div>
 
 <script src="js/lib/jquery.js"></script>
+<script src="js/lib/swfobject.js"></script>
 <script>
 var $screenTop = $('.screen-top');
 var $screenLoading = $('.screen-loading');
 var $screenResult = $('.screen-result');
+
+swfobject.embedSWF("swf/loading_movie.swf", "swfContent", "610", "377", "9.0.0");
 
 $('.form-search').on('submit', function(evt) {
   if($('.input-text').val() === '') {
@@ -183,7 +187,7 @@ $('.form-search').on('submit', function(evt) {
   setTimeout(function() {
     $screenLoading.removeClass('active');
     $screenResult.addClass('active');
-  }, 1000);
+  }, 1900);
   evt.preventDefault();
 });
 </script>
