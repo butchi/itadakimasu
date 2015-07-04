@@ -16,6 +16,14 @@ $('.form-search').on('submit', function(evt) {
   setTimeout(function() {
     $screenLoading.removeClass('active');
     $screenResult.addClass('active');
+    $screenResult.css({
+      opacity: 0
+    });
+    $screenResult.animate({
+      opacity: 1
+    }, {
+      duration: 1000
+    });
   }, 1900);
   evt.preventDefault();
 });
