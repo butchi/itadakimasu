@@ -5,12 +5,18 @@ function getMeat(item) {
     '鶏'
   ];
 
+  var cid = window.assoc[item];
+
+  if(!cid) {
+    return;
+  }
+
   $.ajax({
     type: 'GET',
     url: 'https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20121121',
     data: {
       format: 'json',
-      categoryId: window.assoc[item],
+      categoryId: cid,
       applicationId: '1073052739207338361'
     },
     dataType: 'jsonp',
@@ -48,9 +54,9 @@ function getMeatHandler(json) {
   } else if(result === '豚') {
     $img.attr('src', 'img/image_pig.png');
   } else if(result === '鶏') {
-    $img.attr('src', 'img/image_bird.png');
+    $img.attr('src', 'img/image_bird.jpg');
   } else {
-    $img.attr('src', 'img/image_none.png');
+    $img.attr('src', 'img/image_none.jpg');
   }
 }
 
