@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>いただきます。</title>
+  <meta name="viewport" content="width=640px">
+  <link rel="stylesheet" href="css/screen.css">
+</head>
+<body>
+<script src="js/lib/jquery.js"></script>
+<script src="js/lib/lodash.js"></script>
+<script>
+var obj = {};
+
+$.ajax({
+  type: 'GET',
+  url: 'https://app.rakuten.co.jp/services/api/Recipe/CategoryList/20121121',
+  data: {
+    format: 'json',
+    applicationId: '1073052739207338361'
+  },
+  dataType: 'jsonp',
+  jsonpCallback: 'hoge',
+  success: function(json){
+    var smallArr = json.result.small
+    var len = smallArr.length;
+    var i;
+    for(i = 0; i < len; i++) {
+      var name = smallArr[i].categoryName;
+      var url = smallArr[i].categoryUrl;
+      var catId = url.match(/([0-9\-]*)\/$/)[1];
+      obj[name] = catId;
+    }
+    document.write(JSON.stringify(obj));
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>いただきます。</title>
+  <meta name="viewport" content="width=640px">
+  <link rel="stylesheet" href="css/screen.css">
+</head>
+<body>
+<script src="js/lib/jquery.js"></script>
+<script src="js/lib/lodash.js"></script>
+<script src="js/assoc.js"></script>
+<script>
+var materialArr = [
+  '牛',
+  '豚',
+  '鶏'
+];
+
+var item = 'すき焼き'
+console.log(window.assoc[item]);
+
+$.ajax({
+  type: 'GET',
+  url: 'https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20121121',
+  data: {
+    format: 'json',
+    categoryId: window.assoc[item],
+    applicationId: '1073052739207338361'
+  },
+  dataType: 'jsonp',
+  jsonpCallback: 'hoge',
+  success: function(json){
+    var result;
+    var len = json.result.length;
+    var i;
+    for(i = 0; i < len; i++) {
+      var tempMaterial = json.result[i].recipeMaterial.join('');
+      if(tempMaterial.indexOf('牛') != -1) {
+        result = '牛';
+        break;
+      }
+      if(tempMaterial.indexOf('豚') != -1) {
+        result = '豚';
+        break;
+      }
+      if(tempMaterial.indexOf('鶏') != -1) {
+        result = '鶏';
+        break;
+      }
+    }
+    console.log(result);
+  }
+});
+
+</script>
+</body>
+</html>
