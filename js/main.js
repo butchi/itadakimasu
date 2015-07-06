@@ -2,7 +2,8 @@ function getMeat(item) {
   var materialArr = [
     '牛',
     '豚',
-    '鶏'
+    '鶏',
+    'しらす'
   ];
 
   var cid = window.assoc[item];
@@ -45,6 +46,10 @@ function getMeatHandler(json) {
       result = '鶏';
       break;
     }
+    if(tempMaterial.indexOf('しらす') != -1) {
+      result = 'しらす';
+      break;
+    }
   }
 
   var $img = $(".screen-result .image img");
@@ -55,6 +60,8 @@ function getMeatHandler(json) {
     $img.attr('src', 'img/image_pig.png');
   } else if(result === '鶏') {
     $img.attr('src', 'img/image_bird.jpg');
+  } else if(result === 'しらす') {
+    $img.attr('src', 'img/image_fish.jpg');
   } else {
     $img.attr('src', 'img/image_none.jpg');
   }
