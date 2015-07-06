@@ -29,6 +29,11 @@ body {
   overflow: hidden;
 }
 
+.screen-loading {
+  width: 960px;
+  margin-left: -480px;
+}
+
 .screen-result {
   height: auto;
 }
