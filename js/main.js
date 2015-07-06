@@ -73,6 +73,10 @@ var $screenResult = $('.screen-result');
 
 swfobject.embedSWF("swf/loading_movie.swf", "swfContent", "960", "540", "9.0.0");
 
+$('.btn-retry').on('click', function() {
+  location.reload();
+});
+
 $('.form-search').on('submit', function(evt) {
   var input = $('.input-text').val();
   if(input === '') {

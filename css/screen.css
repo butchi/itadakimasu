@@ -72,7 +72,7 @@ body {
   padding-left: 10px;
 }
 
-.btn-search {
+.btn-search, .btn-retry {
   -webkit-appearance: none;
   border-style: none;
   background-color: white;
@@ -118,6 +118,10 @@ body {
 
 .share-text {
   width: 590px;
+}
+
+.btn-retry-wrapper {
+  text-align: center;
 }
 
 .screen {
