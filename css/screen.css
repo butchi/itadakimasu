@@ -129,6 +129,10 @@ body {
   margin-left: 5px;
 }
 
+.screen-result .text {
+  margin: 20px 0;
+}
+
 .share-text {
   width: 590px;
 }
