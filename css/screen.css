@@ -105,6 +105,17 @@ body {
   content: "※";
 }
 
+.screen-top .block-share {
+  position: absolute;
+  width: 640px;
+  left: 0;
+  top: 50%;
+  font-size: 0;
+  color: #999;
+  text-align: center;
+  margin-top: 200px;
+}
+
 .image-loading {
   position: absolute;
   width: 960px;
