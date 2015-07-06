@@ -90,7 +90,20 @@ body {
   border-radius: 3px;
 }
 
+.screen-top .note {
+  position: absolute;
+  width: 640px;
+  left: 0;
+  top: 50%;
+  font-size: 12px;
+  color: #999;
+  text-align: center;
+  margin-top: 150px;
+}
 
+.screen-top .note:before {
+  content: "※";
+}
 
 .image-loading {
   position: absolute;
