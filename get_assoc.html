@@ -20,17 +20,20 @@ $.ajax({
     applicationId: '1073052739207338361'
   },
   dataType: 'jsonp',
-  jsonpCallback: 'hoge',
+  jsonpCallback: 'callback',
   success: function(json){
-    var smallArr = json.result.small
-    var len = smallArr.length;
-    var i;
-    for(i = 0; i < len; i++) {
-      var name = smallArr[i].categoryName;
-      var url = smallArr[i].categoryUrl;
-      var catId = url.match(/([0-9\-]*)\/$/)[1];
-      obj[name] = catId;
-    }
+    var sizeArr = ['large', 'medium', 'small'];
+    _.forEach(sizeArr, function(size) {
+      var catArr = json.result[size];
+      var len = catArr.length;
+      var i;
+      for(i = 0; i < len; i++) {
+        var name = catArr[i].categoryName;
+        var url = catArr[i].categoryUrl;
+        var catId = url.match(/([0-9\-]*)\/$/)[1];
+        obj[name] = catId;
+      }
+    });
     document.write(JSON.stringify(obj));
   }
 });
