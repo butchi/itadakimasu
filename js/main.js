@@ -29,6 +29,10 @@ function getMeat(item) {
 }
 
 function getMeatHandler(json) {
+  var $twitterElm;
+  var shareTxt;
+  var tweetHtml;
+
   var result;
   var len = json.result.length;
   var i;
@@ -56,15 +60,34 @@ function getMeatHandler(json) {
   if(false) {
   } else if(result === '牛') {
     $img.attr('src', 'img/image_cow.png');
+    shareTxt = '私は牛を0.04匹いただきました。';
   } else if(result === '豚') {
     $img.attr('src', 'img/image_pig.png');
+    shareTxt = '私は豚を0.03匹いただきました。';
   } else if(result === '鶏') {
     $img.attr('src', 'img/image_bird.jpg');
+    shareTxt = '私は鶏を0.3匹いただきました。';
   } else if(result === 'しらす') {
     $img.attr('src', 'img/image_fish.jpg');
+    shareTxt = '私はしらすを2724匹いただきました。';
   } else {
     $img.attr('src', 'img/image_none.jpg');
+    shareTxt = '私はたくさんの命をいただいてます。';
   }
+
+
+  $twitterElm = $('.screen-result .share-twitter');
+  tweetHtml = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="私はたくさんの命をいただいてます。" data-hashtags="いただきます。,zenhack">Tweet</a>';
+
+  setTweet();
+
+  function setTweet() {
+    $('.share-text').text(shareTxt + 'http://butchi.github.io/itadakimasu/ #いただきます。 #zenhack');;
+    $twitterElm.html(tweetHtml);
+    $twitterElm.find('.twitter-share-button').attr('data-text', shareTxt);
+    twttr.widgets.load();
+  }
+
 }
 
 var $screenTop = $('.screen-top');

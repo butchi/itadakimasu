@@ -70,10 +70,9 @@
           </li>
           <li class="share-twitter">
             <a href="https://twitter.com/share" class="twitter-share-button" data-text="私は牛を0.04匹いただきました。" data-hashtags="いただきます。,zenhack">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
           </li>
         </ul>
-        <textarea rows="5" class="share-text">私は牛を0.04匹いただきました。 http://itadaki.ms/20150705</textarea>
+        <textarea rows="5" class="share-text">私はたくさんの命をいただいてます。 http://butchi.github.io/itadakimasu/ #いただきます。 #zenhack</textarea>
         <p class="btn-retry-wrapper">
           <input type="button" class="btn-retry" value="トップへ">
         </p>
@@ -82,6 +81,14 @@
     </section>
   </div>
 
+<script type="text/javascript" charset="utf-8">
+  window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+    js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
+</script>
 <script src="js/lib/jquery.js"></script>
 <script src="js/lib/lodash.js"></script>
 <script src="js/assoc.js"></script>
