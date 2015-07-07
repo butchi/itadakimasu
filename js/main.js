@@ -1,12 +1,15 @@
-function getMeat(item) {
-  var materialArr = [
-    '牛',
-    '豚',
-    '鶏',
-    'しらす'
-  ];
+window.materialLi = {
+  beef: ["牛"],
+  pork: ["豚","ブタ"],
+  chicken: ["鶏","とり"],
+  shirasu: ["しらす"],
+  fish: ["鯏","鰺","鯇","鮎","鮑","鰒","鮟鱇","鮖","鯆","鰮","鰯","鯎","鱓","鰻","鱏","鱝","鱛","鮱","鰧","鰍","鰹","鱟","鮍","魳","鰈","鱚","鯨","鯉","鯒","鮲","鮗","鰶","鯯","鱅","鮴","鮏","鮭","鯖","鮫","鱵","鰆","鯢","鯱","鱸","鯐","鯛","鮹","魛","鱮","鱈","鯲","鰌","魹","鯰","魸","鯡","鰊","鮸","鯊","鰰","鱩","魬","鱧","鮠","鰙","鰉","鯷","鮃","鱶","鰒","鮒","鰤","鯔","鰡","鮪","鱒","鮲","鯧","鯥","鮴","鰙","鰐","あさり","あじ","あめのうお","あゆ","あわび","あんこう","いしもち","いるか","いわし","うぐい","うつぼ","うなぎ","えい","えそ","おおぼら","おこぜ","かじか","かつお","かぶとがに","かわはぎ","かます","かれい","きす","くじら","こい","こち","このしろ","ごり","さけ","さば","さめ","さより","さわら","さんしょううお","しゃち","すずき","すばしり","たい","たこ","たちうお","たなご","たら","どじょう","とど","なまず","にしん","にべ","はぜ","はたはた","はまち","はも","はや","ひがい","ひしこ","ひらめ","ふか","ふぐ","ふな","ぶり","ぼら","まぐろ","ます","まて","まながつお","むつ","めばる","わかさぎ","わに","アサリ","アジ","アメノウオ","アユ","アワビ","アンコウ","イシモチ","イルカ","イワシ","ウグイ","ウツボ","ウナギ","エイ","エソ","オオボラ","オコゼ","カジカ","カツオ","カブトガニ","カワハギ","カマス","カレイ","キス","クジラ","コイ","コチ","コノシロ","ゴリ","サケ","サバ","サメ","サヨリ","サワラ","サンショウウオ","シャチ","スズキ","スバシリ","タイ","タコ","タチウオ","タナゴ","タラ","ドジョウ","トド","ナマズ","ニシン","ニベ","ハゼ","ハタハタ","ハマチ","ハモ","ハヤ","ヒガイ","ヒシコ","ヒラメ","フカ","フグ","フナ","ブリ","ボラ","マグロ","マス","マテ","マナガツオ","ムツ","メバル","ワカサギ","ワニ"]
+};
 
+
+function getMeat(item) {
   var cid = window.assoc[item];
+  // console.log(item, cid);
 
   if(!cid) {
     return;
@@ -38,24 +41,35 @@ function getMeatHandler(json) {
   var i;
   for(i = 0; i < len; i++) {
     var tempMaterial = json.result[i].recipeMaterial.join('');
-    if(tempMaterial.indexOf('牛') != -1) {
+    var re;
+    re = new RegExp(materialLi.shirasu.join('|'));
+    if(tempMaterial.match(re)) {
+      result = 'しらす';
+      break;
+    }
+    re = new RegExp(materialLi.beef.join('|'));
+    if(tempMaterial.match(re)) {
       result = '牛';
       break;
     }
-    if(tempMaterial.indexOf('豚') != -1) {
+    re = new RegExp(materialLi.pork.join('|'));
+    if(tempMaterial.match(re)) {
       result = '豚';
       break;
     }
-    if(tempMaterial.indexOf('鶏') != -1) {
+    re = new RegExp(materialLi.chicken.join('|'));
+    if(tempMaterial.match(re)) {
       result = '鶏';
       break;
     }
-    if(tempMaterial.indexOf('しらす') != -1) {
-      result = 'しらす';
+    re = new RegExp(materialLi.fish.join('|'));
+    if(tempMaterial.match(re)) {
+      result = '魚';
       break;
     }
   }
 
+  // console.log(result);
   var $img = $(".screen-result .image img");
   if(false) {
   } else if(result === '牛') {
@@ -67,6 +81,9 @@ function getMeatHandler(json) {
   } else if(result === '鶏') {
     $img.attr('src', 'img/image_bird.jpg');
     shareTxt = '私は鶏を0.3匹いただきました。';
+  } else if(result === '魚') {
+    $img.attr('src', 'img/image_fish.jpg');
+    shareTxt = '私は魚を0.5匹いただきました。';
   } else if(result === 'しらす') {
     $img.attr('src', 'img/image_shirasu.jpg');
     shareTxt = '私はしらすを2724匹いただきました。';
