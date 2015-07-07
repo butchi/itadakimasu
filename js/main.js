@@ -68,7 +68,7 @@ function getMeatHandler(json) {
     $img.attr('src', 'img/image_bird.jpg');
     shareTxt = '私は鶏を0.3匹いただきました。';
   } else if(result === 'しらす') {
-    $img.attr('src', 'img/image_fish.jpg');
+    $img.attr('src', 'img/image_shirasu.jpg');
     shareTxt = '私はしらすを2724匹いただきました。';
   } else {
     $img.attr('src', 'img/image_none.jpg');
