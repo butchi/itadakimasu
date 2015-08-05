@@ -115,6 +115,7 @@ swfobject.embedSWF("swf/loading_movie.swf", "swfContent", "960", "540", "9.0.0")
 
 $('.btn-retry').on('click', function() {
   location.reload();
+  ga('send', 'event', 'button', 'click', 'retry');
 });
 
 $('.form-search').on('submit', function(evt) {
@@ -124,6 +125,7 @@ $('.form-search').on('submit', function(evt) {
     return;
   }
 
+  ga('send', 'event', 'button', 'search', input);
   evt.preventDefault();
   getMeat(input);
 
